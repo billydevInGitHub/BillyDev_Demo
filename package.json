@@ -1,5 +1,5 @@
 {
-  "name": "react-tutorial",
+  "name": "BillyDev_Demo",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,7 @@
     "react-dom": "^16.4.1",
     "react-scripts": "^2.1.1"
   },
-  "homepage": "https://billydevingithub.github.io/react-tutorial/",
+  "homepage": "https://billydevingithub.github.io/BillyDev_Demo",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
