@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-tutorial/static/css/main.a6a3adad.chunk.css",
-  "main.js": "/react-tutorial/static/js/main.62d83257.chunk.js",
-  "main.js.map": "/react-tutorial/static/js/main.62d83257.chunk.js.map",
-  "runtime~main.js": "/react-tutorial/static/js/runtime~main.782a6e4d.js",
-  "runtime~main.js.map": "/react-tutorial/static/js/runtime~main.782a6e4d.js.map",
-  "static/js/2.86a2265c.chunk.js": "/react-tutorial/static/js/2.86a2265c.chunk.js",
-  "static/js/2.86a2265c.chunk.js.map": "/react-tutorial/static/js/2.86a2265c.chunk.js.map",
-  "index.html": "/react-tutorial/index.html",
-  "precache-manifest.8aa5c2c53f5ee3debd367df457d95017.js": "/react-tutorial/precache-manifest.8aa5c2c53f5ee3debd367df457d95017.js",
-  "service-worker.js": "/react-tutorial/service-worker.js",
-  "static/css/main.a6a3adad.chunk.css.map": "/react-tutorial/static/css/main.a6a3adad.chunk.css.map"
+  "main.css": "/BillyDev_Demo/static/css/main.a6a3adad.chunk.css",
+  "main.js": "/BillyDev_Demo/static/js/main.62d83257.chunk.js",
+  "main.js.map": "/BillyDev_Demo/static/js/main.62d83257.chunk.js.map",
+  "runtime~main.js": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js",
+  "runtime~main.js.map": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js.map",
+  "static/js/2.86a2265c.chunk.js": "/BillyDev_Demo/static/js/2.86a2265c.chunk.js",
+  "static/js/2.86a2265c.chunk.js.map": "/BillyDev_Demo/static/js/2.86a2265c.chunk.js.map",
+  "index.html": "/BillyDev_Demo/index.html",
+  "precache-manifest.9cf6585c4bf0000b4b7a48b3a89523c7.js": "/BillyDev_Demo/precache-manifest.9cf6585c4bf0000b4b7a48b3a89523c7.js",
+  "service-worker.js": "/BillyDev_Demo/service-worker.js",
+  "static/css/main.a6a3adad.chunk.css.map": "/BillyDev_Demo/static/css/main.a6a3adad.chunk.css.map"
 }
