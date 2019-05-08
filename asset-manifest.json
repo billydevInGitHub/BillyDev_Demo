@@ -1,13 +1,13 @@
 {
   "main.css": "/BillyDev_Demo/static/css/main.a6a3adad.chunk.css",
-  "main.js": "/BillyDev_Demo/static/js/main.cc0e2b50.chunk.js",
-  "main.js.map": "/BillyDev_Demo/static/js/main.cc0e2b50.chunk.js.map",
+  "main.js": "/BillyDev_Demo/static/js/main.8b37d2b9.chunk.js",
+  "main.js.map": "/BillyDev_Demo/static/js/main.8b37d2b9.chunk.js.map",
   "runtime~main.js": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js",
   "runtime~main.js.map": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js.map",
-  "static/js/2.ef3feef4.chunk.js": "/BillyDev_Demo/static/js/2.ef3feef4.chunk.js",
-  "static/js/2.ef3feef4.chunk.js.map": "/BillyDev_Demo/static/js/2.ef3feef4.chunk.js.map",
+  "static/js/2.2c53e335.chunk.js": "/BillyDev_Demo/static/js/2.2c53e335.chunk.js",
+  "static/js/2.2c53e335.chunk.js.map": "/BillyDev_Demo/static/js/2.2c53e335.chunk.js.map",
   "index.html": "/BillyDev_Demo/index.html",
-  "precache-manifest.806d54fb781b1bba6c29782df3629cc9.js": "/BillyDev_Demo/precache-manifest.806d54fb781b1bba6c29782df3629cc9.js",
+  "precache-manifest.1fdf172b0130c341c38ae213cb6163de.js": "/BillyDev_Demo/precache-manifest.1fdf172b0130c341c38ae213cb6163de.js",
   "service-worker.js": "/BillyDev_Demo/service-worker.js",
   "static/css/main.a6a3adad.chunk.css.map": "/BillyDev_Demo/static/css/main.a6a3adad.chunk.css.map"
 }
