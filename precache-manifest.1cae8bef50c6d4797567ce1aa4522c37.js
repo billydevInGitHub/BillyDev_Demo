@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js"
   },
   {
-    "revision": "9c1bd0237c5d001967de",
+    "revision": "29c423136d2b5a4ced68",
     "url": "/BillyDev_Demo/static/js/main.f9ef7487.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/BillyDev_Demo/static/js/2.ebf5cc53.chunk.js"
   },
   {
-    "revision": "9c1bd0237c5d001967de",
-    "url": "/BillyDev_Demo/static/css/main.a6a3adad.chunk.css"
+    "revision": "29c423136d2b5a4ced68",
+    "url": "/BillyDev_Demo/static/css/main.63345577.chunk.css"
   },
   {
-    "revision": "4382dc93e93d1f08f06187f8b7d1ceec",
+    "revision": "5d5ee31f4adf9c6d6506919d08c4371a",
     "url": "/BillyDev_Demo/index.html"
   }
 ];
