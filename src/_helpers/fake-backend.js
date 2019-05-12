@@ -32,7 +32,7 @@ export function configureFakeBackend() {
             // wrap in timeout to simulate server api call
             setTimeout(() => {
                 // authenticate - public
-                if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
+                if (url.endsWith('/token/generate-token') && opts.method === 'POST') {
                     const params = JSON.parse(opts.body);
                     const user = users.find(x => x.username === params.username && x.password === params.password);
                     if (!user) return error('Username or password is incorrect');
