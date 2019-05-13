@@ -6,7 +6,8 @@ export function authHeader() {
     console.log('auth-header.js: the attached token is: '+currentUser.token);
     if (currentUser.result&&currentUser.result.token) {
         
-        return { Authorization: `Bearer ${currentUser.result.token}` };
+        return { Authorization: `Bearer ${currentUser.result.token}`, 
+                'Content-Type': `application/json` };
     } else {
         return {};
     }

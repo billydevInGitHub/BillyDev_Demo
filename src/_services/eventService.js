@@ -13,7 +13,7 @@ export const eventService = {
 
 function getAllDTApplications() {
     const requestOptions = { method: 'GET', headers: authHeader() };
-    return fetch(ConstantsClass.SERVER_URL+`/dtapplications`, requestOptions).then(handleResponse);
+    return fetch(ConstantsClass.SERVER_URL+`/api/dtapplications/`, requestOptions).then(handleResponse);
 }
 
 
@@ -41,9 +41,9 @@ function updateDTApp(data){
 }
 
 function triggerApp(data){
-        console.log('eventService.js within triggerApp, input data is'+JSON.stringify(data)); 
-        const requestOptions = { method: 'POST', headers: authHeader(), body: JSON.stringify(data) };
-        return fetch(ConstantsClass.SERVER_URL+'/triggerapp',requestOptions).then(handleResponse);
+        console.log('eventService.js within triggerApp, input data is:'+JSON.stringify(data)); 
+        const requestOptions = { method: 'POST', headers:  authHeader(), body: JSON.stringify(data) };
+        return fetch(ConstantsClass.SERVER_URL+'/api/rtapplication/',requestOptions).then(handleResponse);
     }
 
 

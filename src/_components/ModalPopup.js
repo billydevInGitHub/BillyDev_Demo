@@ -38,8 +38,9 @@ class SimpleModal extends React.Component {
     constructor(props){
       super(props);
       this.initialstate={
-        appname:'',
-        creator:'',
+        appName:'',
+        appCreateUserId:'',
+        uploadTime:'',
       }
       this.state=this.initialstate;
     }
@@ -73,7 +74,7 @@ class SimpleModal extends React.Component {
 
   render() {
     const { classes, handleModalOpen, handleModalClose, modalOpen,updateAppUnderEditing,
-       appnameOnEditing, creatorOnEditing } = this.props;
+       appNameOnEditing, appCreateUserIdOnEditing } = this.props;
     // this.setState({
     //     appname: dtAppUnderEditing?dtAppUnderEditing.appname:'',
     //     creator: dtAppUnderEditing?dtAppUnderEditing.creator:''
@@ -101,17 +102,17 @@ class SimpleModal extends React.Component {
             <label>DTapp Name</label>
                 <input
                 type='text' 
-                name='appnameOnEditing'
+                name='appNameOnEditing'
                 // value={this.state.appname}
-                value={appnameOnEditing}
+                value={appNameOnEditing}
                 onChange={updateAppUnderEditing}
                 /> 
                 <label>Job</label>
                 <input 
                 type='text'
-                name='creatorOnEditing'
+                name='appCreateUserIdOnEditing'
                 // value={this.state.creator}
-                value={creatorOnEditing}
+                value={appCreateUserIdOnEditing}
                 onChange={updateAppUnderEditing}
                 />
                 <input

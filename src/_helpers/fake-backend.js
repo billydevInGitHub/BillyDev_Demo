@@ -2,15 +2,15 @@ export function configureFakeBackend() {
     console.log('fake-backend.js: showing the console message'); 
 
     let users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
-    let dtappls=[{id:1,appname:'test1',creator:'Billy',uploadtime:'2019-03-01T13:51:50'}, 
-                 {id:2,appname:'test2',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:3,appname:'test3',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:4,appname:'test4',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:5,appname:'test5',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:6,appname:'test6',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:7,appname:'test7',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:8,appname:'test8',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
-                 {id:9,appname:'test9',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}]
+    // let dtappls=[{id:1,appname:'test1',creator:'Billy',uploadtime:'2019-03-01T13:51:50'}, 
+    //              {id:2,appname:'test2',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:3,appname:'test3',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:4,appname:'test4',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:5,appname:'test5',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:6,appname:'test6',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:7,appname:'test7',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:8,appname:'test8',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
+    //              {id:9,appname:'test9',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}]
     let rtapplinfo={
         "datasetForRect":[{"x":568,"y":185,"width":25,"height":25,"x_job_name":580,"y_job_name":230,"job_name":"~~~~_job2"},{"x":488,"y":185,"width":25,"height":25,"x_job_name":500,"y_job_name":230,"job_name":"~~~~_job1"},{"x":408,"y":185,"width":25,"height":25,"x_job_name":420,"y_job_name":230,"job_name":"~~~~_job4"},{"x":528,"y":345,"width":25,"height":25,"x_job_name":540,"y_job_name":390,"job_name":"~~~~_job3"},{"x":488,"y":25,"width":25,"height":25,"x_job_name":500,"y_job_name":70,"job_name":"~~~~_start"},{"x":408,"y":345,"width":25,"height":25,"x_job_name":420,"y_job_name":390,"job_name":"~~~~_job5"},{"x":488,"y":505,"width":25,"height":25,"x_job_name":500,"y_job_name":550,"job_name":"~~~~_end"}
         ],

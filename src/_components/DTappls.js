@@ -137,8 +137,8 @@ class CustomPaginationActionsTable extends React.Component {
     modalOpen:false,
     idOnEditing:-1,
     //dtappUnderEditing:{}
-    appnameOnEditing:'',
-    creatorOnEditing:'',
+    appNameOnEditing:'',
+    appCreateUserIdOnEditing:'',
     formtype:'create'
   };
 
@@ -146,8 +146,8 @@ class CustomPaginationActionsTable extends React.Component {
     console.log('DTappls.js  handleModalOpen ...open clicked...');
     this.setState({ 
       modalOpen: true,
-      appnameOnEditing:'',
-      creatorOnEditing:'',
+      appNameOnEditing:'',
+      appCreateUserIdOnEditing:'',
       idOnEditing:-1,
       formtype:'create'
 
@@ -164,8 +164,8 @@ class CustomPaginationActionsTable extends React.Component {
     if(this.state.formtype=='create'){
       //call creation ajax
       console.log('DTappls.js  submitForm for create ...calling eventService ...');
-      eventService.createNewDTApp({'appname':this.state.appnameOnEditing, 
-                                   'creator':this.state.creatorOnEditing})
+      eventService.createNewDTApp({'appName':this.state.appNameOnEditing, 
+                                   'appCreateUserId':this.state.appCreateUserIdOnEditing})
       .then((data)=>{
       //  console.log('DTappls.js  within submitForm after event service call, get the dt appl(appname) info back:'
       //          + (data.creator.endsWith('rr')?'good':'bad')+' appname is:'+ (data.appname=='rr'?'appgood':'appbad')); 
@@ -182,8 +182,8 @@ class CustomPaginationActionsTable extends React.Component {
       //call update ajax
       //call back update rows
       eventService.updateDTApp({'id':this.state.idOnEditing,
-                                'appname':this.state.appnameOnEditing, 
-                                'creator':this.state.creatorOnEditing
+                                'appName':this.state.appnameOnEditing, 
+                                'appCreateUserId':this.state.appCreateUserIdOnEditing
                                  })
       .then((data)=>{
       //  console.log('DTappls.js  within submitForm after event service call, get the dt appl(appname) info back:'
@@ -240,8 +240,8 @@ class CustomPaginationActionsTable extends React.Component {
         tempRows.filter((row, id)=>{
            if(row.id==index){
              this.setState({
-              appnameOnEditing:row.appname,
-              creatorOnEditing:row.creator,
+              appNameOnEditing:row.appName,
+              appCreateUserIdOnEditing:row.appCreateUserId,
               idOnEditing:row.id
              })            
            }
@@ -257,6 +257,7 @@ class CustomPaginationActionsTable extends React.Component {
 
   trigger=(index)=>{
     console.log('DTappls.js within trigger index is:'+index); 
+    var appNameOnEditingLocal='';
     this.setState({
       idOnEditing:index
     })
@@ -264,18 +265,18 @@ class CustomPaginationActionsTable extends React.Component {
     this.state.rows.forEach((row,id)=>{
       if(row.id==index){
         console.log('DTappls.js within this.state.rows.forEach, index matches row.id,  index is:'
-         +index+' row.appnameOnEditing is:'+row.appname
-         +' row.creatorOnEditing is:'+row.creator); 
+         +index+' row.appnameOnEditing is:'+row.appName
+         +' row.creatorOnEditing is:'+row.appCreateUserId); 
         this.setState({
-          appnameOnEditing:row.appname,
-          creatorOnEditing:row.creator
-        })
+          appNameOnEditing:row.appName,
+          appCreateUserIdOnEditing:row.appCreateUserId
+        });
+        appNameOnEditingLocal=row.appName;
       }
     })
 
-    eventService.triggerApp({'id':this.state.idOnEditing,
-    'appname':this.state.appnameOnEditing, 
-    'creator':this.state.creatorOnEditing
+    eventService.triggerApp({'event_name':'hardCodedEventName',
+    'DT_Application_Name':appNameOnEditingLocal
      })
     .then(()=>{
       this.props.history.push('/BillyDev_Demo/monitor');
@@ -291,7 +292,7 @@ class CustomPaginationActionsTable extends React.Component {
 
   componentDidMount() {
       console.log('DTappls.js about to call the event service within componentDidMount...'); 
-    eventService.getAllDTApplications().then(rows=>this.setState({rows}));
+    eventService.getAllDTApplications().then(result=>this.setState({rows:result.dtApplList}));
 }
 
   handleChangePage = (event, page) => {
@@ -315,19 +316,19 @@ class CustomPaginationActionsTable extends React.Component {
                        submitForm={this.submitForm}
                        //dtAppUnderEditing={this.state.dtappUnderEditing}
                        updateAppUnderEditing={this.updateAppUnderEditing}
-                       appnameOnEditing={this.state.appnameOnEditing} 
-                       creatorOnEditing={this.state.creatorOnEditing} 
+                       appNameOnEditing={this.state.appNameOnEditing} 
+                       appCreateUserIdOnEditing={this.state.appCreateUserIdOnEditing} 
                        />
         <div className={classes.tableWrapper}>
           <Table className={classes.table}>
             <TableBody>
               {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
-                <TableRow key={row.id}>
+                <TableRow key={row.appl_id}>
                   <TableCell component="th" scope="row">
-                    {row.appname}
+                    {row.appName}
                   </TableCell>
-                  <TableCell align="right">{row.creator}</TableCell>
-                  <TableCell align="right">{row.uploadtime}</TableCell>
+                  <TableCell align="right">{row.appCreateUserId}</TableCell>
+                  <TableCell align="right">{row.uploadTime}</TableCell>
                   <TableCell align="right"> <input
                     type='button' 
                     value='Delete'  

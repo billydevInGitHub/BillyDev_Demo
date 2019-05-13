@@ -5,6 +5,25 @@ import { select } from 'd3-selection'
 import { rejects } from 'assert';
 
 
+function job_state_to_color(state ){
+	if(state=="01"){
+		return "yellow";
+	}else if(state=="02"){
+		return "pink";
+	}else if(state=="10"){
+		return "green";
+	}else if(state=="11"){
+		return "red";
+	}else if(state=="19"){
+		return "orange";
+	}else if(state=="20"){
+		return "blue";
+	}else if(state=="30"){
+		return "gray";
+	};
+	return "black";
+}
+
 class RTApplication extends React.Component {
 
     constructor(props){
@@ -109,7 +128,9 @@ class RTApplication extends React.Component {
         .attr("height", function(d) {
                     return allScale(d['height'])	
         })
-        .style("fill", "none")
+        .style("fill",  function(d) {
+            return job_state_to_color(d['state']); 
+        })
         .style("stroke", "black");
         // .on('click', function(d,i) {
         //     console.log("mouse on", i);
