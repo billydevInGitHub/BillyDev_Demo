@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/BillyDev_Demo/static/js/runtime~main.e9517a50.js"
   },
   {
-    "revision": "51cfc77856414cc4dae8",
-    "url": "/BillyDev_Demo/static/js/main.c3f656ef.chunk.js"
+    "revision": "6e01f5d5d7c9efee5914",
+    "url": "/BillyDev_Demo/static/js/main.c99b3c2b.chunk.js"
   },
   {
     "revision": "85660c60c84c279c0571",
     "url": "/BillyDev_Demo/static/js/2.df9eb61b.chunk.js"
   },
   {
-    "revision": "51cfc77856414cc4dae8",
+    "revision": "6e01f5d5d7c9efee5914",
     "url": "/BillyDev_Demo/static/css/main.63345577.chunk.css"
   },
   {
-    "revision": "8ac9d1a868bdbd4f1dda04a317a51a1b",
+    "revision": "dba0d9f90a65add9186ad4d56f976fe9",
     "url": "/BillyDev_Demo/index.html"
   }
 ];
