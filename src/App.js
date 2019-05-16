@@ -20,6 +20,8 @@ import {
   import Monitor from './Monitor'
 
 
+
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -29,10 +31,18 @@ class App extends Component {
         };
     }
 
+    renewJWT=()=>{
+        this.state.currentUser&&(authenticationService.jwtRenew()); 
+    }
+
     componentDidMount() {
         console.log('App.js: showing the message in componentDiDMount'); 
         authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
         console.log('App.js: showing the message in componentDiDMount after call authenticationService'); 
+        this.interval=setInterval(() => {
+            this.renewJWT();
+        }, 3000);
+        //this.renewJWT();
     }
 
     logout() {

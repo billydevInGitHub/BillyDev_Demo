@@ -1,15 +1,37 @@
 import { BehaviorSubject } from 'rxjs';
 import { handleResponse } from '../_helpers/handle-response';
 import * as ConstantsClass from '../Constants'
+import { authHeader } from '../_helpers/auth-header';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
 export const authenticationService = {
     login,
+    jwtRenew,
     logout,
     currentUser: currentUserSubject.asObservable(),
     get currentUserValue () { return currentUserSubject.value }
 };
+
+
+function jwtRenew(){
+
+    const requestOptions = { method: 'POST', headers: authHeader(), body: JSON.stringify({'type':'renew token'})};
+
+        console.log('user.service.js  within jwtRenew method  requestOptions is ...'+requestOptions); 
+    fetch(ConstantsClass.SERVER_URL+'/token/renew-token', requestOptions)
+        .then(handleResponse)
+        .then(user => {
+
+            console.log('authenticationService.js with jwtRenew about to set up localstorage...user is:'+JSON.stringify(user)); 
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            currentUserSubject.next(user);
+
+            return user;
+        });
+}
+
 
 function login(username, password) {
     const requestOptions = {

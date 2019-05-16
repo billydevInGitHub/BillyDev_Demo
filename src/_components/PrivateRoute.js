@@ -10,6 +10,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
             // not logged in so redirect to login page with the return url
             console.log("no currentUser in localstorage!");
             return <Redirect to={{ pathname: '/BillyDev_Demo/login', state: { from: props.location } }} />
+        
         }
 
         // authorised so return component
