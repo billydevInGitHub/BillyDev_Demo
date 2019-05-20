@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as ConstantsClass from './Constants'
-
+import { createStore } from 'redux'
 
 import {
     Route,
@@ -19,7 +19,16 @@ import {
   import DTappls from './_components/DTappls'
   import Monitor from './Monitor'
 
-
+  function counter(state = 0, action) {
+    switch (action.type) {
+      case 'INCREMENT':
+        return state + 1
+      case 'DECREMENT':
+        return state - 1
+      default:
+        return state
+    }
+  }
 
 
 class App extends Component {
@@ -42,7 +51,26 @@ class App extends Component {
         this.interval=setInterval(() => {
             this.renewJWT();
         }, 3000);
-        //this.renewJWT();
+
+
+        let store = createStore(counter);
+        store.subscribe(() => console.log(store.getState()))
+        // The only way to mutate the internal state is to dispatch an action.
+        // The actions can be serialized, logged or stored and later replayed.
+        store.dispatch({ type: 'INCREMENT' })
+        // 1
+        store.subscribe(() => console.log('app.js componentDidMount, redux after increment:'+store.getState()));
+
+        store.dispatch({ type: 'INCREMENT' })
+        store.subscribe(() => console.log('app.js componentDidMount, redux after increment:'+store.getState()));
+        // 2
+        store.dispatch({ type: 'DECREMENT' })
+        // 1
+        store.subscribe(() => console.log('app.js componentDidMount, redux after decrement:'+store.getState()));  
+        store.subscribe(() => console.log('app.js componentDidMount, redux after decrement:'+store.getState()));  
+        store.subscribe(() => console.log('app.js componentDidMount, redux after decrement:'+store.getState()));  
+        store.subscribe(() => console.log('app.js componentDidMount, redux after decrement:'+store.getState()));  
+        store.dispatch({ type: 'DECREMENT' })
     }
 
     logout() {

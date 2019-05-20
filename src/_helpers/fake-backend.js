@@ -1,7 +1,11 @@
+import * as ConstantsClass from '../Constants'
+
 export function configureFakeBackend() {
     console.log('fake-backend.js: showing the console message'); 
 
-    let users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
+
+    let users = [{ id: 1, username: 'alex123', password: 'alex123', firstName: 'alex', lastName: 'test' }];
+    let dtappls=[];
     // let dtappls=[{id:1,appname:'test1',creator:'Billy',uploadtime:'2019-03-01T13:51:50'}, 
     //              {id:2,appname:'test2',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
     //              {id:3,appname:'test3',creator:'Flavio',uploadtime:'2019-03-06T13:51:50'}, 
@@ -23,7 +27,17 @@ export function configureFakeBackend() {
     window.fetch = function (url, opts) {
 
         console.log('fake-backend.js   within redefined fetch first line...'); 
-        const isLoggedIn = opts.headers['Authorization'] === 'Bearer fake-jwt-token';
+        
+        let  isLoggedIn = false; 
+        if(opts.headers['Authorization']!==undefined &&'Bearer fake-jwt-token'===opts.headers['Authorization'].substring(0,21)){
+            let msecFromHead=Date.parse(opts.headers['Authorization'].substring(21,45));
+            let now=Date.parse(new Date().toISOString());
+            console.log('fakebackend.js  within configureFakebackend checking if jwt expire or not ...msecHead is:'+msecFromHead +' now is:'+now); 
+            if(msecFromHead+6000>now){
+                isLoggedIn=true; 
+                console.log('fakebackend.js  within configureFakebackend jwt not expire ......' ); 
+            }
+        }
 
         console.log('fake-backend.js   within redefined fetch method before return Promise...'); 
         return new Promise((resolve, reject) => {
@@ -36,19 +50,42 @@ export function configureFakeBackend() {
                     const params = JSON.parse(opts.body);
                     const user = users.find(x => x.username === params.username && x.password === params.password);
                     if (!user) return error('Username or password is incorrect');
-                    return ok({
-                        id: user.id,
-                        username: user.username,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        token: 'fake-jwt-token'
+                    console.log('fakebackend.js  within  /token/generate-token ... aboutthe return the result of user..');
+                    console.log( user);
+                    return ok({result:{
+                                        id: user.id,
+                                        username: user.username,
+                                        firstName: user.firstName,
+                                        lastName: user.lastName,
+                                        token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)
+                            }
                     });
                 }
+
+                 // renew token
+                if (url.endsWith('/token/renew-token') && opts.method === 'POST') {
+                    const username = opts.headers['Authorization'].substring(45);
+                    const user = users.find(x => x.username === username);
+                    if (!user) return error('Username or password is incorrect');
+                    console.log('fakebackend.js  within  /token/generate-token ... aboutthe return the result of user..');
+                    console.log( user);
+                    return ok({result:{
+                                        id: user.id,
+                                        username: user.username,
+                                        firstName: user.firstName,
+                                        lastName: user.lastName,
+                                        token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)
+                            }
+                    });
+                }
+
 
                 // get users - secure
                 if (url.endsWith('/users') && opts.method === 'GET') {
                     if (!isLoggedIn) return unauthorised();
-                    return ok(users);
+                    console.log('fake-backend.js within config fakebackend... return /uses ...');
+                    console.log(users); 
+                    return ok({result:users});
                 }
 
                 // get dt applications
@@ -99,15 +136,15 @@ export function configureFakeBackend() {
                 // private helper functions
 
                 function ok(body) {
-                    resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
+                    resolve({ ok: true, result: () => Promise.resolve(JSON.stringify(body)) })
                 }
 
                 function unauthorised() {
-                    resolve({ status: 401, text: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
+                    resolve({ status: 401, result: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
                 }
 
                 function error(message) {
-                    resolve({ status: 400, text: () => Promise.resolve(JSON.stringify({ message })) })
+                    resolve({ status: 400, result: () => Promise.resolve(JSON.stringify({ message })) })
                 }
             }, 500);
         });

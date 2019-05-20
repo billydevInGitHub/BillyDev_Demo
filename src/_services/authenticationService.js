@@ -3,6 +3,13 @@ import { handleResponse } from '../_helpers/handle-response';
 import * as ConstantsClass from '../Constants'
 import { authHeader } from '../_helpers/auth-header';
 
+
+console.log('authenticationservice.js  displaying localstorage : '+localStorage.stringify);
+console.log("local storage");
+let i=0; 
+for (i = 0; i < localStorage.length; i++)   {
+    console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+}
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
 export const authenticationService = {
