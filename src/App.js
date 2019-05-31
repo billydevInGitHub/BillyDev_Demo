@@ -99,39 +99,30 @@ class App extends Component {
       // if(currentUser && currentUser !== 'null' && currentUser !== 'undefined'){
         console.log('App.js: current user logged in, currentUser is:'+currentUser); 
         return (
-            <Router history={history}>
-                 <div>
-                   <ul className="header">
-                     <li><NavLink exact to={ConstantsClass.RELATIVE_PATH}>UserInfo</NavLink></li>
-                     <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}>Home</NavLink></li>
-                     <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}>Stuff</NavLink></li>
-                     <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}>Contact</NavLink></li>
-                     <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime</NavLink></li>
-                     <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}>Monitor</NavLink></li>
-                     <li><a onClick={this.logout} className="nav-item nav-link">Logout</a></li>
-                   </ul>
-         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap Here should be logo place</NavbarBrand>
-          <Nav className="ml-auto" navbar>
-              <NavItem>
-                 <NavLink exact to={ConstantsClass.RELATIVE_PATH}>UserInfo</NavLink>
-              </NavItem>
-              <NavItem>
-                 <NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}>Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}>Stuff</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}>Contact</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}>Monitor</NavLink>
-              </NavItem>
-
+         <Router history={history}>
+           <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark ml-auto">
+             <NavbarBrand href="/">reactstrap Here should be logo place</NavbarBrand>
+             <Nav className="ml-auto" navbar> 
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <NavLink exact to={ConstantsClass.RELATIVE_PATH}   className="nav-link" >UserInfo</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}  className="nav-link">Home</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}  className="nav-link" >Stuff</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}  className="nav-link" >Contact</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}  className="nav-link" >DesignTime Application</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}  className="nav-link" >Monitor</NavLink>
+                </li>
+              </ul>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Design Time
@@ -152,24 +143,20 @@ class App extends Component {
               <NavItem>
                 <a onClick={this.logout} className="nav-item nav-link">Logout</a>
               </NavItem>
-          </Nav>
-        </Navbar>
-
-
-                  {/* } */}
-                   <div className="content">           
-                     <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
-                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/home"} component={Home}/>
-                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/stuff"} component={Stuff}/>
-                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
-                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
-                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
-                     <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
-                     <h3>This is just a test for login user</h3>
-                   </div>
-                 </div>
-              </Router>
-         )
+            </Nav>
+           </Navbar>
+          <div className="content">           
+              <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/home"} component={Home}/>
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/stuff"} component={Stuff}/>
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
+              <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
+              <h3>This is just a test for login user</h3>
+            </div>
+        </Router>
+        )
      
     // }else{
     //     console.log('App.js: current user NOT logged in'); 
