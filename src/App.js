@@ -19,6 +19,19 @@ import {
   import DTappls from './_components/DTappls'
   import Monitor from './Monitor'
 
+  import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
+
+
   function counter(state = 0, action) {
     switch (action.type) {
       case 'INCREMENT':
@@ -83,14 +96,11 @@ class App extends Component {
   render() {
     const { currentUser } = this.state;
 
-      if(currentUser && currentUser !== 'null' && currentUser !== 'undefined'){
+      // if(currentUser && currentUser !== 'null' && currentUser !== 'undefined'){
         console.log('App.js: current user logged in, currentUser is:'+currentUser); 
         return (
             <Router history={history}>
                  <div>
-                   <h1>Simple SPA</h1>
-         
-                  { }
                    <ul className="header">
                      <li><NavLink exact to={ConstantsClass.RELATIVE_PATH}>UserInfo</NavLink></li>
                      <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}>Home</NavLink></li>
@@ -100,6 +110,52 @@ class App extends Component {
                      <li><NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}>Monitor</NavLink></li>
                      <li><a onClick={this.logout} className="nav-item nav-link">Logout</a></li>
                    </ul>
+         <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">reactstrap Here should be logo place</NavbarBrand>
+          <Nav className="ml-auto" navbar>
+              <NavItem>
+                 <NavLink exact to={ConstantsClass.RELATIVE_PATH}>UserInfo</NavLink>
+              </NavItem>
+              <NavItem>
+                 <NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}>Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}>Stuff</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}>Contact</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}>Monitor</NavLink>
+              </NavItem>
+
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Design Time
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              <NavItem>
+                <a onClick={this.logout} className="nav-item nav-link">Logout</a>
+              </NavItem>
+          </Nav>
+        </Navbar>
+
+
                   {/* } */}
                    <div className="content">           
                      <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
@@ -113,29 +169,29 @@ class App extends Component {
                    </div>
                  </div>
               </Router>
-        )
+         )
      
-    }else{
-        console.log('App.js: current user NOT logged in'); 
-        return (
-        <Router history={history}>
-                <div>
-                  <h1>Simple SPA</h1>
-                  <div className="content">           
-                    <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
-                    <PrivateRoute  path={ConstantsClass.RELATIVE_PATH+"/home"} component={Home}/>
-                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/stuff"} component={Stuff}/>
-                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
-                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
-                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
-                    <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
-                    <h3>This is just a test for not login</h3>
-                  </div>
-                </div>
-             </Router>
-        )
-    };
-  }
+    // }else{
+    //     console.log('App.js: current user NOT logged in'); 
+    //     return (
+    //     <Router history={history}>
+    //             <div>
+    //               <div className="content">           
+    //                 <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
+    //                 <PrivateRoute  path={ConstantsClass.RELATIVE_PATH+"/home"} component={Home}/>
+    //                 <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/stuff"} component={Stuff}/>
+    //                 <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
+    //                 <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
+    //                 <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
+    //                 <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
+    //                 <h3>This is just a test for not login</h3>
+    //               </div>
+    //             </div>
+    //          </Router>
+    //     )
+    // };
+   }
+      
 }
 
 export default App;
