@@ -18,6 +18,7 @@ import {
   import authenticationService from './_services/authenticationService'
   import DTappls from './_components/DTappls'
   import Monitor from './Monitor'
+  import AdminConsole from './_components/AdminConsole'
 
   import {
     Collapse,
@@ -114,6 +115,9 @@ class App extends Component {
                   <NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}  className="nav-link" >Stuff</NavLink>
                 </li>
                 <li class="nav-item">
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  className="nav-link" >AdminConsole</NavLink>
+                </li>
+                <li class="nav-item">
                   <NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}  className="nav-link" >Contact</NavLink>
                 </li>
                 <li class="nav-item">
@@ -152,6 +156,7 @@ class App extends Component {
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
               <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
               <h3>This is just a test for login user</h3>
             </div>
