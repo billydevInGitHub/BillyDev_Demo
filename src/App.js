@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
-import * as ConstantsClass from './Constants'
 import { createStore } from 'redux'
-
 import {
     Route,
     NavLink,
     Router
   } from "react-router-dom";
-  import Home from "./Home";
-  import Stuff from "./Stuff";
-  import Contact from "./Contact";
-
-  import PrivateRoute from './_components/PrivateRoute'
-  import LoginPage from './LoginPage'
-  import { history } from './_helpers/history'
-  import HomePage from './HomePage'
-  import authenticationService from './_services/authenticationService'
-  import DTappls from './_components/DTappls'
-  import Monitor from './Monitor'
-  import AdminConsole from './_components/AdminConsole'
-
-  import {
+import {
     Collapse,
     Navbar,
     NavbarToggler,
@@ -32,8 +17,22 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
+import * as ConstantsClass from './_helpers/Constants'
+import { history } from './_helpers/history'
+import PrivateRoute from './_components/PrivateRoute'
+import LoginPage from './LoginPage'
+import authenticationService from './_services/authenticationService'
 
-  function counter(state = 0, action) {
+import HomePage from './_components/HomePage'
+import DashBoard from "./_components/DashBoard"
+import AdminConsole from './_components/AdminConsole'
+
+
+
+
+
+
+function counter(state = 0, action) {
     switch (action.type) {
       case 'INCREMENT':
         return state + 1
@@ -102,64 +101,41 @@ class App extends Component {
         return (
          <Router history={history}>
            <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark ml-auto">
-             <NavbarBrand href="/">reactstrap Here should be logo place</NavbarBrand>
+             <NavbarBrand href="/">Orange Process Management</NavbarBrand>
              <Nav className="ml-auto" navbar> 
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <NavLink exact to={ConstantsClass.RELATIVE_PATH}   className="nav-link" >UserInfo</NavLink>
+                  <NavLink exact to={ConstantsClass.RELATIVE_PATH}   className="nav-link" >Home</NavLink>
                 </li>
                 <li class="nav-item">
-                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/home"}  className="nav-link">Home</NavLink>
-                </li>
-                <li class="nav-item">
-                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/stuff"}  className="nav-link" >Stuff</NavLink>
+                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/dashboard"}  className="nav-link" >DashBoard</NavLink>
                 </li>
                 <li class="nav-item">
                   <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  className="nav-link" >AdminConsole</NavLink>
                 </li>
-                <li class="nav-item">
-                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/contact"}  className="nav-link" >Contact</NavLink>
-                </li>
-                <li class="nav-item">
-                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}  className="nav-link" >DesignTime Application</NavLink>
-                </li>
-                <li class="nav-item">
-                  <NavLink to={ConstantsClass.RELATIVE_PATH+"/monitor"}  className="nav-link" >Monitor</NavLink>
-                </li>
               </ul>
-              <UncontrolledDropdown nav inNavbar>
+              <UncontrolledDropdown nav inNavbar  className="navbar-dark bg-dark">
                 <DropdownToggle nav caret>
-                  Design Time
+                  User Info
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu right className="navbar-dark bg-dark">
                   <DropdownItem>
-                    <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink to={ConstantsClass.RELATIVE_PATH+"/dtapp"}>DesignTime Application</NavLink>
+                     <a onClick={this.logout} className="nav-item nav-link">User Info</a>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Reset
+                     <a onClick={this.logout} className="nav-item nav-link">Logout</a>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <NavItem>
-                <a onClick={this.logout} className="nav-item nav-link">Logout</a>
-              </NavItem>
             </Nav>
            </Navbar>
-          <div className="content">           
+{/*           <div className="content  border border-primary">            */}
               <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
-              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/home"} component={Home}/>
-              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/stuff"} component={Stuff}/>
-              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/contact"} component={Contact}/> 
-              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dtapp"} component={DTappls}/>
-              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/monitor"} component={Monitor} />
+              <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard"} component={DashBoard}/>
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
               <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
-              <h3>This is just a test for login user</h3>
-            </div>
+  {/*           </div> */}
         </Router>
         )
      

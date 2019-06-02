@@ -1,4 +1,3 @@
-import * as ConstantsClass from '../Constants'
 
 export function configureFakeBackend() {
     console.log('fake-backend.js: showing the console message'); 

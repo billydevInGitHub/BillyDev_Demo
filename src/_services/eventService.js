@@ -1,6 +1,6 @@
 import { authHeader } from '../_helpers/auth-header';
 import {  handleResponse } from '../_helpers/handle-response';
-import * as ConstantsClass from '../Constants'
+import * as ConstantsClass from '../_helpers/Constants'
 
 export const eventService = {
     getAllDTApplications,

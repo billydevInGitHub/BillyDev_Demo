@@ -1,4 +1,4 @@
-import * as ConstantsClass from '../Constants'
+import * as ConstantsClass from '../_helpers/Constants'
 
 import { authHeader } from '../_helpers/auth-header';
 import {  handleResponse } from '../_helpers/handle-response';
