@@ -11,6 +11,7 @@ import * as ConstantsClass from '../_helpers/Constants'
 import AdminConsoleStuff from './AdminConsoleStuff'
 import DTappls from './DTappls'
 import Monitor from './Monitor'
+import AdminConsoleCollapSidebarMenu from './AdminConsoleCollapSidebarMenuMonitor'
 
 class AdminConsole extends React.Component{
 
@@ -28,12 +29,14 @@ class AdminConsole extends React.Component{
                         <NavItem>
                             <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole/monitor"}  className="nav-link" >Monitor</NavLink>
                         </NavItem>
+                        <AdminConsoleCollapSidebarMenu />
                         <NavItem>
                             <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole/monitor"}  className="nav-link" >Editor</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole/monitor"}  className="nav-link" >Editor</NavLink>
                         </NavItem>
+
                     </Nav>
                   </Col>
                   <Col xs="8"  className='border'> 

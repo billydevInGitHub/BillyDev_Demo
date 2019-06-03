@@ -3,6 +3,8 @@ import React from 'react';
 import  { userService }          from '../_services/user.service';
 import { authenticationService } from '../_services/authenticationService';
 
+import Calendar from 'react-calendar'
+
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -10,7 +12,8 @@ class HomePage extends React.Component {
 
         this.state = {
             currentUser: authenticationService.currentUserValue,
-            users: null
+            users: null,
+            date: new Date()
         };
     }
 
@@ -19,6 +22,13 @@ class HomePage extends React.Component {
        
         userService.getAll().then(users => this.setState({ users:users.result }));
         console.log(this.state.users); 
+
+    }
+
+    onChange = (date) => {
+         this.setState({ date });
+         console.log(date);
+        //  alert('New date is: '+date);
 
     }
 
@@ -36,6 +46,12 @@ class HomePage extends React.Component {
                         )}
                     </ul>
                 }
+                <div>
+                    <Calendar
+                        onChange={this.onChange}
+                        value={this.state.date}
+                    />
+                </div>
             </div>
         );
     }
