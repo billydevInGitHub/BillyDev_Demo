@@ -6,11 +6,13 @@ import { authHeader } from '../_helpers/auth-header';
 
 console.log('authenticationservice.js  displaying localstorage : '+localStorage.stringify);
 console.log("local storage");
+//localStorage.removeItem('currentUser');
 let i=0; 
 for (i = 0; i < localStorage.length; i++)   {
     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
 }
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+// const currentUserSubject = new BehaviorSubject(JSON.parse("{'test':'test'}"));
 
 export const authenticationService = {
     login,

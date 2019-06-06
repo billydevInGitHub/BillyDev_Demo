@@ -6,7 +6,7 @@ export function authHeader() {
     console.log('auth-header.js: currentUser is: '+JSON.stringify(currentUser));
     if (currentUser.result&&currentUser.result.token) {
         
-        return { Authorization: `Bearer ${currentUser.result.token}`, 
+        return { Authorization: `Bearer ${currentUser.token}`, 
                 'Content-Type': `application/json` };
     } else {
         return {};

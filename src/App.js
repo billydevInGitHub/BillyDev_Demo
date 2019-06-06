@@ -63,7 +63,7 @@ class App extends Component {
         console.log('App.js: showing the message in componentDiDMount after call authenticationService'); 
         this.interval=setInterval(() => {
             this.renewJWT();
-        }, 3000);
+        }, 3000000);
 
 
         let store = createStore(counter);

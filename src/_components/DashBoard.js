@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BarChart from './BarChart'
  
 class Dashboard extends Component {
   render() {
@@ -14,6 +15,7 @@ class Dashboard extends Component {
           <li>Eget erat</li>
           <li>Id porttitor</li>
         </ol>
+        <BarChart data={[5,10,1,3]} size={[500,500]} />
       </div>
     );
   }
