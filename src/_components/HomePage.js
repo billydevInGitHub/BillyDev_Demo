@@ -20,7 +20,7 @@ class HomePage extends React.Component {
     componentDidMount() {
         console.log('HomePage.js: within componentDidMount......display users'); 
        
-        userService.getAll().then(users => this.setState({ users:users.result }));
+        userService.getAll().then(users => this.setState({ users:users }));
         console.log(this.state.users); 
 
     }

@@ -32,7 +32,7 @@ export function configureFakeBackend() {
             let msecFromHead=Date.parse(opts.headers['Authorization'].substring(21,45));
             let now=Date.parse(new Date().toISOString());
             console.log('fakebackend.js  within configureFakebackend checking if jwt expire or not ...msecHead is:'+msecFromHead +' now is:'+now); 
-            if(msecFromHead+6000>now){
+            if(msecFromHead+6000000>now){
                 isLoggedIn=true; 
                 console.log('fakebackend.js  within configureFakebackend jwt not expire ......' ); 
             }
@@ -51,13 +51,11 @@ export function configureFakeBackend() {
                     if (!user) return error('Username or password is incorrect');
                     console.log('fakebackend.js  within  /token/generate-token ... aboutthe return the result of user..');
                     console.log( user);
-                    return ok({result:{
-                                        id: user.id,
-                                        username: user.username,
-                                        firstName: user.firstName,
-                                        lastName: user.lastName,
-                                        token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)
-                            }
+                    return ok(  {id: user.id,
+                                username: user.username,
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                                token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)                        
                     });
                 }
 
@@ -68,13 +66,12 @@ export function configureFakeBackend() {
                     if (!user) return error('Username or password is incorrect');
                     console.log('fakebackend.js  within  /token/generate-token ... aboutthe return the result of user..');
                     console.log( user);
-                    return ok({result:{
-                                        id: user.id,
-                                        username: user.username,
-                                        firstName: user.firstName,
-                                        lastName: user.lastName,
-                                        token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)
-                            }
+                    return ok({
+                                id: user.id,
+                                username: user.username,
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                                token: ('fake-jwt-token'+(new Date()).toISOString()+user.username)                            
                     });
                 }
 
@@ -84,7 +81,7 @@ export function configureFakeBackend() {
                     if (!isLoggedIn) return unauthorised();
                     console.log('fake-backend.js within config fakebackend... return /uses ...');
                     console.log(users); 
-                    return ok({result:users});
+                    return ok(users);
                 }
 
                 // get dt applications
@@ -135,15 +132,18 @@ export function configureFakeBackend() {
                 // private helper functions
 
                 function ok(body) {
-                    resolve({ ok: true, result: () => Promise.resolve(JSON.stringify(body)) })
+                    // resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
+                    resolve({ ok: true, status:200, text: () => Promise.resolve(body) })
                 }
 
                 function unauthorised() {
-                    resolve({ status: 401, result: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
+                    // resolve({ status: 401, text: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
+                    resolve({ status: 401, text: () => Promise.resolve({ message: 'Unauthorised'}) })
                 }
 
                 function error(message) {
-                    resolve({ status: 400, result: () => Promise.resolve(JSON.stringify({ message })) })
+                    // resolve({ status: 400, text: () => Promise.resolve(JSON.stringify({ message })) })
+                    resolve({ status: 400, text: () => Promise.resolve({ message }) })
                 }
             }, 500);
         });

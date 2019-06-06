@@ -4,7 +4,7 @@ export function handleResponse(response) {
     return response.json().then(body => {
         if (response.status === 200) {
             console.log('handle-response.js the return data as following...'+JSON.stringify(body))
-         
+            console.log(body)
             return body; 
             // const data = body && JSON.parse(body);
             // return data; 
