@@ -133,17 +133,17 @@ export function configureFakeBackend() {
 
                 function ok(body) {
                     // resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
-                    resolve({ ok: true, status:200, text: () => Promise.resolve(body) })
+                    resolve({ ok: true, status:200, json: () => Promise.resolve(body) })
                 }
 
                 function unauthorised() {
                     // resolve({ status: 401, text: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
-                    resolve({ status: 401, text: () => Promise.resolve({ message: 'Unauthorised'}) })
+                    resolve({ status: 401, json: () => Promise.resolve({ message: 'Unauthorised'}) })
                 }
 
                 function error(message) {
                     // resolve({ status: 400, text: () => Promise.resolve(JSON.stringify({ message })) })
-                    resolve({ status: 400, text: () => Promise.resolve({ message }) })
+                    resolve({ status: 400, json: () => Promise.resolve({ message }) })
                 }
             }, 500);
         });
