@@ -36,8 +36,8 @@ function deleteDTApp(index){
 
 function updateDTApp(data){
     console.log('eventService.js within updateeDTApp, input data is'+JSON.stringify(data)); 
-    const requestOptions = { method: 'POST', headers: authHeader(), body: JSON.stringify(data) };
-    return fetch(ConstantsClass.SERVER_URL+'/updatedtapp',requestOptions).then(handleResponse);
+    const requestOptions = { method: 'PATCH', headers: authHeader(), body: JSON.stringify(data) };
+    return fetch(ConstantsClass.SERVER_URL+'/api/dtapplication/',requestOptions).then(handleResponse);
 }
 
 function triggerApp(data){

@@ -4,6 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -92,34 +95,31 @@ class SimpleModal extends React.Component {
           onClose={handleModalClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h6" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
             <form>
-            <label>DTapp Name</label>
-                <input
+              <div className="form-group">
+                <label>Design Time Application</label><br />
+                <input className="form-control"
                 type='text' 
                 name='appNameOnEditing'
                 // value={this.state.appname}
                 value={appNameOnEditing}
                 onChange={updateAppUnderEditing}
-                /> 
-                <label>Job</label>
-                <input 
+                />
+                <br  /> 
+                <label>Job</label><br />
+                <input className="form-control"
                 type='text'
                 name='appCreateUserIdOnEditing'
                 // value={this.state.creator}
                 value={appCreateUserIdOnEditing}
                 onChange={updateAppUnderEditing}
-                />
-                <input
+                /><br />
+                <input  className="form-control"
                 type='button'
                 value='Submit'
                 onClick={this.submitForm}
                 />
+              </div>
             </form>
 
             {/* <SimpleModalWrapped /> */}

@@ -181,8 +181,8 @@ class CustomPaginationActionsTable extends React.Component {
       console.log('DTappls.js  submitForm for edit ...calling eventService ...');
       //call update ajax
       //call back update rows
-      eventService.updateDTApp({'id':this.state.idOnEditing,
-                                'appName':this.state.appnameOnEditing, 
+      eventService.updateDTApp({'appl_id':this.state.idOnEditing,
+                                'appName':this.state.appNameOnEditing, 
                                 'appCreateUserId':this.state.appCreateUserIdOnEditing
                                  })
       .then((data)=>{
@@ -213,8 +213,8 @@ class CustomPaginationActionsTable extends React.Component {
         this.setState({modalOpen:false});
         console.log('DTappls.js  within submit form, end of submit form!!!');
       });
-    }
-  }
+    }//end of if
+  } //end of submitForm
 
   deleteRow=(id)=>{
    
@@ -238,11 +238,11 @@ class CustomPaginationActionsTable extends React.Component {
     console.log('DTappls.js within editRow index is:'+index); 
     var tempRows=this.state.rows;
         tempRows.filter((row, id)=>{
-           if(row.id==index){
+           if(row.appl_id==index){
              this.setState({
               appNameOnEditing:row.appName,
               appCreateUserIdOnEditing:row.appCreateUserId,
-              idOnEditing:row.id
+              idOnEditing:row.appl_id
              })            
            }
            return row;
@@ -292,6 +292,7 @@ class CustomPaginationActionsTable extends React.Component {
 
   componentDidMount() {
       console.log('DTappls.js about to call the event service within componentDidMount...'); 
+      //todo: when backend remote the wrapper of dtAppList, dtApplList could be removed, so rows:result
     eventService.getAllDTApplications().then(result=>this.setState({rows:result.dtApplList}));
 }
 
@@ -332,17 +333,17 @@ class CustomPaginationActionsTable extends React.Component {
                   <TableCell align="right"> <input
                     type='button' 
                     value='Delete'  
-                    onClick={()=>{this.deleteRow(row.id)}} 
+                    onClick={()=>{this.deleteRow(row.appl_id)}} 
                   /></TableCell> 
                   <TableCell align="right"> <input
                     type='button' 
                     value='Edit'  
-                    onClick={()=>{this.editRow(row.id)}} 
+                    onClick={()=>{this.editRow(row.appl_id)}} 
                   /></TableCell> 
                   <TableCell align="right"> <input
                     type='button' 
                     value='Trigger'  
-                    onClick={()=>{this.trigger(row.id)}} 
+                    onClick={()=>{this.trigger(row.appl_id)}} 
                   /></TableCell> 
                 </TableRow>
               ))}
