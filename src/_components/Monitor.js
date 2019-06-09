@@ -52,7 +52,7 @@ class Monitor extends React.Component{
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 10000);
+        this.interval = setInterval(() => this.tick(), 10000000);
     }
 
     componentWillUnmount() {

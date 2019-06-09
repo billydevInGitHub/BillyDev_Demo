@@ -3,6 +3,7 @@ import { scaleLinear } from 'd3-scale'
 import { max } from 'd3-array'
 import { select } from 'd3-selection'
 import { rejects } from 'assert';
+import {Row, Card,Col, CardTitle,CardText, Button, } from 'reactstrap'
 
 
 function job_state_to_color(state ){
@@ -39,6 +40,7 @@ class RTApplication extends React.Component {
         this.createChart();
     }
 
+
  
 
     createChart=()=>{
@@ -56,7 +58,10 @@ class RTApplication extends React.Component {
         const allScale = scaleLinear()
                              .domain([0, MODEL_CANVAS_WIDTH])
                              .range([0, CANVAS_WIDTH*ZOOM]);
-       
+
+        const shows_job_details=(name)=>{
+            console.log( "RTApplication.js... within shows_job_details name:"+name);
+        }                             
     /* for the line part */
 
 
@@ -131,17 +136,17 @@ class RTApplication extends React.Component {
         .style("fill",  function(d) {
             return job_state_to_color(d['state']); 
         })
-        .style("stroke", "black");
-        // .on('click', function(d,i) {
-        //     console.log("mouse on", i);
-        //     //alert("job name is"+d['job_name']);
-        //     shows_job_details(d['job_name']); 
-        //     })
-        // .on('mouseover', function(d,i) {
-        //     console.log("mouse on", i);
-        //     //alert("job name is"+d['job_name']);
-        //     shows_job_details(d['job_name']); 
-        //     });
+        .style("stroke", "black")
+        .on('click', function(d,i) {
+            console.log("mouse on", i);
+            //alert("job name is"+d['job_name']);
+            shows_job_details(d['job_name']); 
+            })
+        .on('mouseover', function(d,i) {
+            console.log("mouse on", i);
+            //alert("job name is"+d['job_name']);
+            shows_job_details(d['job_name']); 
+            });
 
         /* text part */
         
@@ -179,12 +184,20 @@ class RTApplication extends React.Component {
     }
     render(){
         return (
+            <Row>
+                <Col sm='6'>
+                    <svg ref={node => this.node = node}   width={1500} height={500}>                    
+                    </svg>
+                </Col>
+                <Col sm="3">
+                    <Card body>
+                    <CardTitle>Special Title Treatment</CardTitle>
+                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                    <Button>Go somewhere</Button>
+                    </Card>
+                </Col>
+            </Row>
 
-            <svg ref={node => this.node = node}
-                    width={1500} height={500}>
-                    
-            </svg>
-             
         )
     }
 }

@@ -263,7 +263,7 @@ class CustomPaginationActionsTable extends React.Component {
     })
     console.log(this.state.rows);
     this.state.rows.forEach((row,id)=>{
-      if(row.id==index){
+      if(row.appl_id==index){
         console.log('DTappls.js within this.state.rows.forEach, index matches row.id,  index is:'
          +index+' row.appnameOnEditing is:'+row.appName
          +' row.creatorOnEditing is:'+row.appCreateUserId); 
@@ -275,8 +275,12 @@ class CustomPaginationActionsTable extends React.Component {
       }
     })
 
-    eventService.triggerApp({'event_name':'hardCodedEventName',
-    'DT_Application_Name':appNameOnEditingLocal
+    // eventService.triggerApp({'event_name':'hardCodedEventName',
+    // 'DT_Application_Name':appNameOnEditingLocal
+    //  })
+    eventService.triggerApp({'event_id':1,'dtappname':'data_88010_U001_Diagram_cs',
+    'event_name':'hardCodedEventName',
+    'DT_Application_Name':'data_88010_U001_Diagram_c'
      })
     .then(()=>{
       this.props.history.push('/BillyDev_Demo/monitor');
