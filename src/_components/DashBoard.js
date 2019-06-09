@@ -1,24 +1,40 @@
-import React, { Component } from "react";
-import BarChart from './BarChart'
- 
-class Dashboard extends Component {
-  render() {
-    return (
-      <div>
-        <h2>This is dashboard</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-        <BarChart data={[5,10,1,3]} size={[500,500]} />
-      </div>
-    );
-  }
+import React from 'react'
+import PrivateRoute from './PrivateRoute'
+import {
+    Route,
+    NavLink,
+    Router
+  } from "react-router-dom";
+import { Container, Row, Col,Nav, NavItem } from 'reactstrap';
+
+import * as ConstantsClass from '../_helpers/Constants'
+import DashboardRealtimeOverviewDiagrams from './DashBoardRealtimeOverviewDiagrams'
+import DashboardRealtimeSidebarMenu from './DashboardRealtimeSidebarMenu'
+
+
+
+class Dashboard extends React.Component{
+
+
+    render(){
+        return (
+            <div className="content  border border-success" >
+            <Container fluid className='border'>
+                <Row>
+                  <Col xs="1"   className='border'>
+                    <Nav vertical>
+                        <DashboardRealtimeSidebarMenu />
+                    </Nav>
+                  </Col>
+                  <Col xs="10"  className='border'> 
+                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard/realtime/overview"} component={DashboardRealtimeOverviewDiagrams}/>
+                  </Col>
+                </Row>
+
+            </Container>
+            </div>
+        )
+    }
 }
- 
-export default Dashboard;
+
+export default Dashboard

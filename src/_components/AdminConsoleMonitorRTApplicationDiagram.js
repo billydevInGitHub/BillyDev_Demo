@@ -25,7 +25,7 @@ function job_state_to_color(state ){
 	return "black";
 }
 
-class RTApplication extends React.Component {
+class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
 
     constructor(props){
         super(props);
@@ -202,4 +202,4 @@ class RTApplication extends React.Component {
     }
 }
 
-export default RTApplication
+export default AdminConsoleMonitorRTApplicationDiagram

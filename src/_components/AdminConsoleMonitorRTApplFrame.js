@@ -1,6 +1,5 @@
 import React from 'react'
-import RTApplication from './RTApplication'
-import BarChart from './BarChart';
+import AdminConsoleMonitorRTApplicationDiagram from './AdminConsoleMonitorRTApplicationDiagram'
 import monitorService from '../_services/monitorService';
 
 function rand() {
@@ -8,7 +7,7 @@ function rand() {
   }
 
 
-class Monitor extends React.Component{
+class AdminConsoleMonitorRTApplFrame extends React.Component{
 
     constructor(props) {
         super(props);
@@ -120,7 +119,7 @@ class Monitor extends React.Component{
             </div>
             <div className="monitorview">
          
-                <RTApplication 
+                <AdminConsoleMonitorRTApplicationDiagram 
                 datasetForRect={this.state.datasetForRect}  
                 datasetForLine={this.state.datasetForLine} 
                 xoffset={this.state.xoffset} 
@@ -134,4 +133,4 @@ class Monitor extends React.Component{
     }
 }
 
-export default Monitor 
+export default AdminConsoleMonitorRTApplFrame 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { scaleLinear } from 'd3-scale'
 import { max } from 'd3-array'
 import { select } from 'd3-selection'
-class BarChart extends Component {
+class DashboardRealtimeOverviewDiagramBarChart extends Component {
    constructor(props){
       super(props)
       this.createBarChart = this.createBarChart.bind(this)
@@ -51,4 +51,4 @@ render() {
       </svg>
    }
 }
-export default BarChart
+export default DashboardRealtimeOverviewDiagramBarChart

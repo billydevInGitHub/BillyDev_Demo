@@ -24,7 +24,7 @@ import LoginPage from './LoginPage'
 import authenticationService from './_services/authenticationService'
 
 import HomePage from './_components/HomePage'
-import DashBoard from "./_components/DashBoard"
+import DashBoard from "./_components/Dashboard"
 import AdminConsole from './_components/AdminConsole'
 
 
@@ -129,11 +129,13 @@ class App extends Component {
             </Nav>
            </Navbar>
 {/*           <div className="content  border border-primary">            */}
+              <PrivateRoute exact path={"/"} component={HomePage} />
               <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard"} component={DashBoard}/>
               <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
               <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
   {/*           </div> */}
+          <div className="pt-5 text-center"> @2019 BillyDev All Rights reserved</div>
         </Router>
         )
      

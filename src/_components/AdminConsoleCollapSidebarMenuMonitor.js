@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import * as ConstantsClass from '../_helpers/Constants'
 
 const AdminConsoleCollapSidebarMenu = () => (
-    <NavItem  className="pl-3" >
+    <NavItem  className="pl-1" >
         <NavLink  id="toggler" >
             Monitor Group
         </NavLink>
