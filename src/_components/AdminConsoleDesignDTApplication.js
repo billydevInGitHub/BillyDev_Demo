@@ -200,7 +200,7 @@ class CustomPaginationActionsTable extends React.Component {
         // })
 
         tempRows.forEach((row, i)=>{
-          if(row.id==data.id){
+          if(row.appl_id==data.appl_id){
             tempRows[i]=data;
           }
         })
@@ -208,10 +208,14 @@ class CustomPaginationActionsTable extends React.Component {
         console.log(tempRows);
         this.setState({
           rows:tempRows,
-          idOnEditing:data.id
+          idOnEditing:data.appl_id
         });
         this.setState({modalOpen:false});
         console.log('DTappls.js  within submit form, end of submit form!!!');
+      },
+      (error)=>{
+        this.setState({modalOpen:false});
+        console.log('DTappls.js  within submit form, error in calling the API!!! error:'+error);
       });
     }//end of if
   } //end of submitForm
