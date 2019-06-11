@@ -14,10 +14,10 @@ class  DashboardRealtimeSidebarMenu extends React.Component{
     render(){
         return(
             <NavItem  className="pl-3 pb-3" >
-                <NavLink  id="togglerDesign" onClick={this.toggle}>
+                <NavLink  id="togglerRealtime" onClick={this.toggle}>
                     Realtime{this.state.collapse? <i class="material-icons sidebar">remove</i>: <i class="material-icons sidebar">add</i>}
                 </NavLink>
-                <UncontrolledCollapse toggler="#togglerDesign">
+                <UncontrolledCollapse toggler="#togglerRealtime">
                     <NavLink to={ConstantsClass.RELATIVE_PATH+"/dashboard/realtime/overview"}  className="nav-link" >RT Overview</NavLink>            
                 </UncontrolledCollapse>
             </NavItem>

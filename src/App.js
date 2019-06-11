@@ -135,7 +135,7 @@ class App extends Component {
           <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard"} component={DashBoard}/>
           <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
           <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
-          <div className="pt-5 text-center"> @2019 BillyDev All Rights reserved</div>
+          <div className="pt-5 text-center"> @2019 All Rights reserved</div>
         </Router>
         )
    }

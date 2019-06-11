@@ -1,2 +1,4 @@
 .material-icons.orange600 { color: #FB8C00;font-size: 32px; }
 .material-icons.sidebar { font-size: 12px; }
+.nav-link,#togglerDesign,#togglerSchedule,#togglerMonitor,#togglerConfig,#togglerRealtime { color:#696969}
+.nav-link.active {color:#000000}
