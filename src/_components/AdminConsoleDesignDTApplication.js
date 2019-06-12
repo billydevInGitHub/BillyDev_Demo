@@ -282,12 +282,11 @@ class CustomPaginationActionsTable extends React.Component {
     // eventService.triggerApp({'event_name':'hardCodedEventName',
     // 'DT_Application_Name':appNameOnEditingLocal
     //  })
-    eventService.triggerApp({'event_id':1,'dtappname':'data_88010_U001_Diagram_cs',
-    'event_name':'hardCodedEventName',
-    'DT_Application_Name':'data_88010_U001_Diagram_c'
-     })
+    eventService.triggerApp({'event_id':1,'dtappname':appNameOnEditingLocal,
+    'event_name':'hardCodedEventName'
+      })
     .then(()=>{
-      this.props.history.push('/BillyDev_Demo/monitor');
+      this.props.history.push('/BillyDev_Demo/adminconsole/monitor/rtappldiagram');
     })
   }
 
