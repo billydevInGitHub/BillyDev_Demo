@@ -19,7 +19,7 @@ function getAllDTApplications() {
 
 function getAllEvents() {
     const requestOptions = { method: 'GET', headers: authHeader() };
-    return fetch(ConstantsClass.SERVER_URL+`/events`, requestOptions).then(handleResponse);
+    return fetch(ConstantsClass.SERVER_URL+`/api/events/`, requestOptions).then(handleResponse);
 }
 
 function createNewDTApp(data){
