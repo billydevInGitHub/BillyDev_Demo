@@ -185,11 +185,11 @@ class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
     render(){
         return (
             <Row>
-                <Col sm='6'>
+                <Col md='6'>
                     <svg ref={node => this.node = node}   width={1500} height={500}>                    
                     </svg>
                 </Col>
-                <Col sm="3">
+                <Col md="6">
                     <Card body>
                     <CardTitle>Special Title Treatment</CardTitle>
                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>

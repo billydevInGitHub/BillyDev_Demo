@@ -15,7 +15,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import eventService from '../_services/eventService'
 import AdminConsoleDesignDTApplicationModalPopup from './AdminConsoleDesignDTApplicationModalPopup'
-import {Input} from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
 
 
 const actionsStyles = theme => ({
@@ -119,25 +119,21 @@ const styles = theme => ({
 class CustomPaginationActionsTable extends React.Component {
   state = {
     rows: [],
-    //   createData('Cupcake', 305, 3.7),
-    //   createData('Donut', 452, 25.0),
-    //   createData('Eclair', 262, 16.0),
-    //   createData('Frozen yoghurt', 159, 6.0),
-    //   createData('Gingerbread', 356, 16.0),
-    //   createData('Honeycomb', 408, 3.2),
-    //   createData('Ice cream sandwich', 237, 9.0),
-    //   createData('Jelly Bean', 375, 0.0),
-    //   createData('KitKat', 518, 26.0),
-    //   createData('Lollipop', 392, 0.2),
-    //   createData('Marshmallow', 318, 0),
-    //   createData('Nougat', 360, 19.0),
-    //   createData('Oreo', 437, 18.0),
-    // ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
     page: 0,
     rowsPerPage: 5,
     currentRow:{},
+    currentRowKey:null
   };
 
+
+  rowSelected=(event_name)=>{
+    this.setState({
+      currentRow:this.state.rows.find(row=>{
+        return (row.event_name==event_name)
+      }),
+      currentRowKey:event_name
+    })
+   }
 
 
   submitForm=()=>{
@@ -240,31 +236,13 @@ class CustomPaginationActionsTable extends React.Component {
 
   }
 
-  trigger=(index)=>{
-    console.log('DTappls.js within trigger index is:'+index); 
-    var appNameOnEditingLocal='';
-    this.setState({
-      idOnEditing:index
-    })
-    console.log(this.state.rows);
-    this.state.rows.forEach((row,id)=>{
-      if(row.appl_id==index){
-        console.log('DTappls.js within this.state.rows.forEach, index matches row.id,  index is:'
-         +index+' row.appnameOnEditing is:'+row.appName
-         +' row.creatorOnEditing is:'+row.appCreateUserId); 
-        this.setState({
-          appNameOnEditing:row.appName,
-          appCreateUserIdOnEditing:row.appCreateUserId
-        });
-        appNameOnEditingLocal=row.appName;
-      }
-    })
+  trigger=(currentRow)=>{
+    console.log('AdminnConsoleScheduleEventes.js within trigger currentRow.event_name is:'+currentRow.event_name); 
 
-    // eventService.triggerApp({'event_name':'hardCodedEventName',
-    // 'DT_Application_Name':appNameOnEditingLocal
-    //  })
-    eventService.triggerApp({'event_id':1,'dtappname':appNameOnEditingLocal,
-    'event_name':'hardCodedEventName'
+    console.log(currentRow);
+
+    eventService.triggerApp({'event_id':1,'dtappname':currentRow.dtappname,
+    'event_name':currentRow.event_name
       })
     .then(()=>{
       this.props.history.push('/BillyDev_Demo/adminconsole/monitor/rtappldiagram');
@@ -284,7 +262,10 @@ class CustomPaginationActionsTable extends React.Component {
 }
 
   handleChangePage = (event, page) => {
-    this.setState({ page });
+    this.setState({ 
+      page,
+      currentRowKey:null
+     });
   };
 
   handleChangeRowsPerPage = event => {
@@ -293,8 +274,10 @@ class CustomPaginationActionsTable extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { rows, rowsPerPage, page } = this.state;
+    const { rows, rowsPerPage, page, currentRow,currentRowKey } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    console.log("currentrow");
+    console.log(currentRow); 
 
     return (
       <Paper className={classes.root}>
@@ -303,7 +286,8 @@ class CustomPaginationActionsTable extends React.Component {
             <TableBody>
               {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                 <TableRow key={row.appl_id}>
-                  <TableCell align="center"><Input type="radio"  name="radioSelectRow" id="checkboxRowSelect" /></TableCell>
+                  <TableCell align="center"><Input type="radio" checked={currentRowKey==row.event_name?true:false} name="radioSelectRow" id="checkboxRowSelect" 
+                               onClick={()=>{this.rowSelected(row.event_name)}} /></TableCell>
                   <TableCell component="th" scope="row">
                     {row.event_name}
                   </TableCell>
@@ -352,6 +336,65 @@ class CustomPaginationActionsTable extends React.Component {
             </TableFooter>
           </Table>
         </div>
+        <div class="border border-secondary p-3">          
+        {/* <form>
+              <div className="form-group">
+                <label>Event Name </label><br />
+                <input className="form-control"
+                type='text' 
+                id='event_name'
+                name='event_name'
+                 value={currentRow.event_name}
+                // value='testValue'
+                />
+                <input  className="form-control"
+                type='button'
+                value='Submit'
+                onClick={this.submitForm}
+                />
+              </div>
+            </form> */}
+        {currentRowKey&& <Form>
+            <Row>
+              <Col md={4}>
+                <FormGroup>
+                  <Label for="event_name">Event_Name</Label>
+                  <Input type="text" name="event_name" id="event_name" value={currentRow.event_name} placeholder=""/>
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row >
+              <Col md={4}  >
+                <FormGroup>
+                  <Label for="dtapplicationName">Desigin Time Application Name</Label>
+                  <Input type="text" name="dtapplicationName" id="dtapplicationName" value={currentRow.dtappname}  placeholder="" />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                    <Label for="state">State</Label>
+                    <Input type="text" name="state" id="state" value={currentRow.state} placeholder="" />
+                </FormGroup>              
+              </Col>
+              <Col md={4} >
+                  <FormGroup>
+                    <Label for="eventCreateTime">Event Create Time</Label>
+                    <Input type="text" name="eventCreateTime" id="eventCreateTime" placeholder=""/>
+                  </FormGroup>
+              </Col>
+            </Row>
+          <Row>
+            <Col md={8}></Col>
+            <Col md={2}>
+              <Button >Apply</Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={()=>{this.trigger(currentRow)}}>Trigger</Button>
+            </Col>
+          </Row> 
+        </Form>   
+        }         
+      </div>
       </Paper>
     );
   }
