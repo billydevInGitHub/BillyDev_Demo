@@ -1,4 +1,19 @@
+/* main navbar big icon */
 .material-icons.orange600 { color: #FB8C00;font-size: 32px; }
+
+/*side bar*/
 .material-icons.sidebar { font-size: 12px; }
 .nav-link,#togglerDesign,#togglerSchedule,#togglerMonitor,#togglerConfig,#togglerRealtime { color:#696969}
 .nav-link.active {color:#000000}
+
+/* the following is for the dashboard charts */
+/*brush chart*/
+.brush .extent {
+    stroke: #000;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+  }
+   
+  .brush .background {
+    fill: #ddd;
+  }

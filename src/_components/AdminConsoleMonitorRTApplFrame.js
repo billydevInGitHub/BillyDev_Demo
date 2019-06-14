@@ -117,8 +117,7 @@ class AdminConsoleMonitorRTApplFrame extends React.Component{
                  <button id="moveBottom" onClick={this.moveDrawBottom}>Move bottom</button>
                  <button id="reSet" onClick={this.reset}>Reset</button>
             </div>
-            <div className="monitorview">
-         
+            <div className="monitorview">         
                 <AdminConsoleMonitorRTApplicationDiagram 
                 datasetForRect={this.state.datasetForRect}  
                 datasetForLine={this.state.datasetForLine} 
@@ -126,7 +125,8 @@ class AdminConsoleMonitorRTApplFrame extends React.Component{
                 yoffset={this.state.yoffset} 
                 zoom={this.state.zoom} 
                  />
-                    {/* <BarChart data={this.state.data} size={this.state.size} /> */}
+
+                {/* <BarChart data={this.state.data} size={this.state.size} /> */}
             </div>
         </div>
         )

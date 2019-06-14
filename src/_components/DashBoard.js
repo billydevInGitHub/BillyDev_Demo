@@ -8,7 +8,7 @@ import {
 import { Container, Row, Col,Nav, NavItem } from 'reactstrap';
 
 import * as ConstantsClass from '../_helpers/Constants'
-import DashboardRealtimeOverviewDiagrams from './DashBoardRealtimeOverviewDiagrams'
+import DashboardRealtimeOverviewFrame from './DashBoardRealtimeOverviewFrame'
 import DashboardRealtimeSidebarMenu from './DashboardRealtimeSidebarMenu'
 
 
@@ -21,13 +21,13 @@ class Dashboard extends React.Component{
             <div className="content  border border-success" >
             <Container fluid className='border'>
                 <Row>
-                  <Col xs="1"   className='border'>
+                  <Col md="1"   className='border'>
                     <Nav vertical>
                         <DashboardRealtimeSidebarMenu />
                     </Nav>
                   </Col>
-                  <Col xs="10"  className='border'> 
-                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard/realtime/overview"} component={DashboardRealtimeOverviewDiagrams}/>
+                  <Col md="11"  className='border'> 
+                    <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard/realtime/overview"} component={DashboardRealtimeOverviewFrame}/>
                   </Col>
                 </Row>
 
