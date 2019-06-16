@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale'
 import { max } from 'd3-array'
 import { select } from 'd3-selection'
 import { rejects } from 'assert';
-import {Row, Card,Col, CardTitle,CardText, Button, } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
 
 
 function job_state_to_color(state ){
@@ -25,10 +25,35 @@ function job_state_to_color(state ){
 	return "black";
 }
 
+function job_state_to_string(state ){
+	if(state=="01"){
+		return "01";
+	}else if(state=="02"){
+		return "02";
+	}else if(state=="10"){
+		return "10";
+	}else if(state=="11"){
+		return "11";
+	}else if(state=="19"){
+		return "19";
+	}else if(state=="20"){
+		return "20";
+	}else if(state=="30"){
+		return "30";
+	};
+	return "01";
+}
+
+
+
 class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
 
     constructor(props){
         super(props);
+        this.state={
+            job_name:'test',
+            job_state:'test_state'
+        }
      }
 
 
@@ -40,6 +65,9 @@ class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
         this.createChart();
     }
 
+    updateJobInfo=()=>{
+
+    }
 
  
 
@@ -61,7 +89,14 @@ class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
 
         const shows_job_details=(name)=>{
             console.log( "RTApplication.js... within shows_job_details name:"+name);
-        }                             
+        }                  
+        
+        const setjobinfo=(jobinfo)=>{
+            this.setState({
+                job_name:jobinfo.job_name,
+                job_state:jobinfo.job_state
+            })
+        }
     /* for the line part */
 
 
@@ -102,51 +137,7 @@ class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
                     }		
         });
 
-    /* for rect part */    
-        select(node)
-        .selectAll('rect')
-        .data(this.props.datasetForRect)
-        .enter()
-        .append('rect')
-     
-     select(node)
-        .selectAll('rect')
-        .data(this.props.datasetForRect)
-        .exit()
-        .remove()
 
-
-
-    select(node)
-    .selectAll('rect')
-    .data(this.props.datasetForRect)
-    .attr("x", function(d) {
-           // console.log('RTApplication.js  within createChart  d[x] is: '+d['x']);
-                return allScale(d['x'])+XOFFSET
-        })
-        .attr("y", function(d) {
-                return allScale(d['y'])+YOFFSET
-        })
-        .attr("width", function(d) {
-                return allScale(d['width'])
-        })
-        .attr("height", function(d) {
-                    return allScale(d['height'])	
-        })
-        .style("fill",  function(d) {
-            return job_state_to_color(d['state']); 
-        })
-        .style("stroke", "black")
-        .on('click', function(d,i) {
-            console.log("mouse on", i);
-            //alert("job name is"+d['job_name']);
-            shows_job_details(d['job_name']); 
-            })
-        .on('mouseover', function(d,i) {
-            console.log("mouse on", i);
-            //alert("job name is"+d['job_name']);
-            shows_job_details(d['job_name']); 
-            });
 
         /* text part */
         
@@ -179,22 +170,94 @@ class AdminConsoleMonitorRTApplicationDiagram extends React.Component {
         //     //alert("job name is"+d['job_name']);
         //     shows_job_details(d['job_name']); 
         //     });
+
         
+            /* for rect part */    
+            select(node)
+            .selectAll('rect')
+            .data(this.props.datasetForRect)
+            .enter()
+            .append('rect')
+         
+         select(node)
+            .selectAll('rect')
+            .data(this.props.datasetForRect)
+            .exit()
+            .remove()
+    
+    
+    
+        select(node)
+        .selectAll('rect')
+        .data(this.props.datasetForRect)
+        .attr("x", function(d) {
+               // console.log('RTApplication.js  within createChart  d[x] is: '+d['x']);
+                    return allScale(d['x'])+XOFFSET
+            })
+            .attr("y", function(d) {
+                    return allScale(d['y'])+YOFFSET
+            })
+            .attr("width", function(d) {
+                    return allScale(d['width'])
+            })
+            .attr("height", function(d) {
+                        return allScale(d['height'])	
+            })
+            .style("fill",  function(d) {
+                return job_state_to_color(d['state']); 
+            })
+            .style("stroke", "black")
+            .on('click', function(d,i) {
+                console.log("mouse on", i);
+                alert("job name is"+d['job_name']);
+                shows_job_details(d['job_name']); 
+                setjobinfo({
+                    job_name:d['job_name'],
+                    //job_state:(''+d['state'])
+                    // state:job_state_to_color(d['state'])
+                   //job_state:job_state_to_color(d['state'])
+                   job_state:job_state_to_string(d['state'])
+                })
+                })
+            .on('mouseover', function(d,i) {
+                console.log("mouse on", i);
+                //alert("job name is"+d['job_name']);
+                shows_job_details(d['job_name']); 
+                });
 
     }
     render(){
         return (
             <Row>
-                <Col md='6'>
-                    <svg ref={node => this.node = node}   width={1500} height={500}>                    
-                    </svg>
+                <Col md='10'>
+                    <div class="border border-secondary p-3" style={{height: '750px'}}>    
+                        <svg ref={node => this.node = node}   width={1500} height={500}>                    
+                        </svg>
+                    </div>
                 </Col>
-                <Col md="6">
-                    <Card body>
-                    <CardTitle>Special Title Treatment</CardTitle>
-                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                    <Button>Go somewhere</Button>
-                    </Card>
+                <Col md="2">
+                    <Form>
+                        <Row>
+                            <Col md={12}>
+                                <FormGroup>
+                                <Label for="event_name">Job_Name</Label>
+                                <Input type="text" name="job_name" id="job_name" value={this.state.job_name} placeholder=""/>
+                                </FormGroup>
+                                <FormGroup>
+                                <Label for="dtapplicationName">Job State</Label>
+                                <Input type="text" name="state" id="state" value={this.state.job_state}  placeholder="" />
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                    <Row>
+                        <Col md={8}></Col>
+                        <Col md={2}>
+                           <Button onClick={this.updateJobInfo}>Update</Button>
+                        </Col>
+                        <Col md={2}>
+                        </Col>
+                    </Row> 
+                    </Form>   
                 </Col>
             </Row>
 

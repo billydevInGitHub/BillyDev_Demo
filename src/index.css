@@ -17,3 +17,13 @@
   .brush .background {
     fill: #ddd;
   }
+
+/*adjust the footer*/
+/* 
+.footer {
+  position: fixed;
+  bottom: 50px;
+  padding-left:45%;
+  padding-right:45%
+} */
+

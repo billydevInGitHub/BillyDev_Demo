@@ -99,44 +99,47 @@ class App extends Component {
       // if(currentUser && currentUser !== 'null' && currentUser !== 'undefined'){
         console.log('App.js: current user logged in, currentUser is:'+currentUser); 
         return (
-         <Router history={history}>
-           <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark ml-auto">
-             <NavbarBrand href="/">Orange Process Management<i class="material-icons orange600">bubble_chart</i></NavbarBrand>
-             {currentUser&&
-                <Nav className="ml-auto" navbar> 
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <NavLink exact to={ConstantsClass.RELATIVE_PATH}   className="nav-link" ><i class="material-icons md-48">home</i>Home</NavLink>
-                    </li>
-                    <li class="nav-item">
-                      <NavLink to={ConstantsClass.RELATIVE_PATH+"/dashboard"}  className="nav-link" ><i class="material-icons">dashboard</i>DashBoard</NavLink>
-                    </li>
-                    <li class="nav-item">
-                      <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  className="nav-link" ><i class="material-icons">brightness_auto</i>AdminConsole</NavLink>
-                    </li>
-                  </ul>
-                  <UncontrolledDropdown nav inNavbar  className="navbar-dark bg-dark">
-                    <DropdownToggle nav caret>
-                    <i class="material-icons">people</i>Users&Roles </DropdownToggle>
-                    <DropdownMenu right className="navbar-dark bg-dark">
-                      <DropdownItem>
-                        <a onClick={this.logout} className="nav-item nav-link"><i class="material-icons">account_box</i>User Info</a>
-                      </DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>
-                        <a onClick={this.logout} className="nav-item nav-link"><i class="material-icons">clear</i>Logout</a></DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-              </Nav>
-            }
-           </Navbar>
-          <PrivateRoute exact path={"/"} component={HomePage} />
-          <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
-          <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard"} component={DashBoard}/>
-          <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
-          <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
-          <div className="pt-5 text-center"> @2019 All Rights reserved</div>
-        </Router>
+              <Router history={history}>
+                  <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark ml-auto">
+                    <NavbarBrand href="/">Orange Process Management<i class="material-icons orange600">bubble_chart</i></NavbarBrand>
+                    {currentUser&&
+                        <Nav className="ml-auto" navbar> 
+                          <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              <NavLink exact to={ConstantsClass.RELATIVE_PATH}   className="nav-link" ><i class="material-icons md-48">home</i>Home</NavLink>
+                            </li>
+                            <li class="nav-item">
+                              <NavLink to={ConstantsClass.RELATIVE_PATH+"/dashboard"}  className="nav-link" ><i class="material-icons">dashboard</i>DashBoard</NavLink>
+                            </li>
+                            <li class="nav-item">
+                              <NavLink to={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  className="nav-link" ><i class="material-icons">brightness_auto</i>AdminConsole</NavLink>
+                            </li>
+                          </ul>
+                          <UncontrolledDropdown nav inNavbar  className="navbar-dark bg-dark">
+                            <DropdownToggle nav caret>
+                            <i class="material-icons">people</i>Users&Roles </DropdownToggle>
+                            <DropdownMenu right className="navbar-dark bg-dark">
+                              <DropdownItem>
+                                <a onClick={this.logout} className="nav-item nav-link"><i class="material-icons">account_box</i>User Info</a>
+                              </DropdownItem>
+                              <DropdownItem divider />
+                              <DropdownItem>
+                                <a onClick={this.logout} className="nav-item nav-link"><i class="material-icons">clear</i>Logout</a></DropdownItem>
+                            </DropdownMenu>
+                          </UncontrolledDropdown>
+                      </Nav>
+                    }
+                </Navbar>
+                <PrivateRoute exact path={"/"} component={HomePage} />
+                <PrivateRoute exact path={ConstantsClass.RELATIVE_PATH} component={HomePage} />
+                <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/dashboard"} component={DashBoard}/>
+                <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole"}  component={AdminConsole} />
+                <Route path={ConstantsClass.RELATIVE_PATH+"/login"} component={LoginPage} />
+                {/* <div className="footer"><div className="pt-5 text-center"> @2019 All Rights reserved</div></div> */}
+                {/* <div className="footer"><div className="inner-div"> @2019 All Rights reserved</div></div> */}
+                {/* <div className="footer">@2019 All Rights reserved</div> */}
+                <div className="text-center">@2019 All Rights reserved</div>
+              </Router>
         )
    }
       

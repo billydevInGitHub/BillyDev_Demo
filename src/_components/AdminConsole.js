@@ -24,10 +24,13 @@ class AdminConsole extends React.Component{
 
     render(){
         return (
-            <div className="content  border border-success" >
-            <Container fluid className='border'>
+            // <div className="content  border border-success" >
+            <div className="content" >
+            {/* <Container fluid className='border'> */}
+            <Container fluid>
                 <Row>
-                  <Col xs="1"   className='border'>
+                  {/* <Col xs="1"   className='border'> */}
+                  <Col xs="1">
                     <Nav vertical>
                         <AdminConsoleConfigurationSidebarMenu />
                         <AdminConsoleDesignSidebarMenu />
@@ -35,7 +38,8 @@ class AdminConsole extends React.Component{
                         <AdminConsoleMonitorSidebarMenu />
                     </Nav>
                   </Col>
-                  <Col xs="10"  className='border'> 
+                  {/* <Col xs="11"  className='border'>  */}
+                  <Col xs="11"  > 
                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole/configuration/config"} component={AdminConsoleConfigurationMain}/>
                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole/design/dtapplications"} component={AdminConsoleDesignDTApplication}/>
                     <PrivateRoute path={ConstantsClass.RELATIVE_PATH+"/adminconsole/design/dtjobs"} component={AdminConsoleStuff}/>

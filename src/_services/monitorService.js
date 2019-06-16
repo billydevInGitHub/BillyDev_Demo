@@ -10,7 +10,7 @@ export const monitorService = {
 function getRTAppInfo() {
     const requestOptions = { method: 'GET', headers: authHeader() };
     //todo: need pass in app id
-    return fetch(ConstantsClass.SERVER_URL+`/api/rtapplication/71`, requestOptions).then(handleResponse);
+    return fetch(ConstantsClass.SERVER_URL+`/api/rtapplication/33`, requestOptions).then(handleResponse);
 }
 
 

@@ -23,7 +23,8 @@ class AdminConsoleMonitorRTApplFrame extends React.Component{
             ],
             xoffset:0,
             yoffset:0,
-            zoom:1
+            zoom:1,
+            rtapplication:null,
          };
         this.state=this.initialstate;
       }
@@ -44,14 +45,15 @@ class AdminConsoleMonitorRTApplFrame extends React.Component{
         .then(ajaxData=>{
             this.setState({
                 datasetForRect:ajaxData.datasetForRect,
-                dataSetForLine:ajaxData.dataSetForLine
+                dataSetForLine:ajaxData.dataSetForLine,
+                applicationName:ajaxData.applicationName
             })
         })
 
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 10000000);
+        this.interval = setInterval(() => this.tick(), 10000);
     }
 
     componentWillUnmount() {
@@ -104,7 +106,7 @@ class AdminConsoleMonitorRTApplFrame extends React.Component{
     render(){
         return(
         <div>
-            <h1> this is for monitoring component with D3 charts; </h1>
+            <h1> {this.state.applicationName} </h1>
             <div>
                 Seconds: {this.state.seconds}                
             </div>
